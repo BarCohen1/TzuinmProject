@@ -1,0 +1,216 @@
+﻿C:\Users\Bar\AppData\Local\Programs\Python\Python36\python.exe "C:/Users/Bar/Google Drive/Tziunim/request/RequestMakerBagrut.py"
+get sent
+reciving REGEX groups:...
+
+
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<title>אוניברסיטת ת"א-חישוב ציוני קבלה</title>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
+<link   type="text/css" rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/themes/start/jquery-ui.css">
+<script type="text/javascript" src="/IncNet/V4/TauMajor.js?ver=000"></script>
+<link   type="text/css" rel="stylesheet" href="/IncNet/V4/TauMajorS.css?ver=000">
+<script type="text/javascript">
+function chk_form()
+{
+ obj=document.forms[0];
+ if(!chkRadioBtnField(obj.sug,'סוג ציון מבוקש לחישוב')){return false;}
+ sug=getRadioBtnValue(obj.sug,"1,2,3");
+ //
+ mec=obj.mechina.value;
+ //hatama
+ if(sug == '2' || sug == '3')
+ {
+  if(!chkNumericField(obj.txtHatama,'ציון התאמה','yes','###',200,800)){return false;}
+ }
+ //bagrut
+ if(sug == '1' || sug == '3')
+ {
+  if(mec!='yes'){s_tziun='ממוצע בגרות מותאם';max_bagrut=115; min_bagrut=40}
+  else{s_tziun='ציון גמר מכינה';max_bagrut=100; min_bagrut=60}
+  if(!chkNumericField(obj.txtBagrut,s_tziun,'yes','###.##',min_bagrut,max_bagrut)){return false;}
+ }
+ //psicho
+ if(sug == '1' || sug == '2')
+ {
+  if(!chkNumericField(obj.txtPsicho,'ציון פסיכומטרי','yes','###',200,800)){return false;}
+ }
+ // 
+ return true;
+}
+//
+function chgsug(ind)
+{
+ obj=document.forms[0];
+ if(ind == 1){obj.txtHatama.value='';obj.txtHatama.readOnly=true;obj.txtHatama.className='freedisb';}
+ else{obj.txtHatama.readOnly=false;obj.txtHatama.className='freeinpub';}
+ if(ind == 2){obj.txtBagrut.value='';obj.txtBagrut.readOnly=true;obj.txtBagrut.className='freedisb';obj.txtHatama.focus();}
+ else{obj.txtBagrut.readOnly=false;obj.txtBagrut.className='freeinpub';} 
+ if(ind == 3){obj.txtPsicho.value='';obj.txtPsicho.readOnly=true;obj.txtPsicho.className='freedisb';obj.txtHatama.focus();}
+ else{obj.txtPsicho.readOnly=false;obj.txtPsicho.className='freeinpub';}  
+ if(ind == 1){obj.txtBagrut.focus();}
+}
+</script>
+</head>
+
+<body>
+<div align="center" class="divcenter">
+<span id='spankot'><table class=msgsmall dir=rtl style='width:100%;background-color:#b3dffd;'><tr style='text-align:right'><td id='logo' style='width:200px'><img src='/IncNet/Images/Login/tau_logon_heb.gif' alt='logo'></td><td style='text-align:center'><img src='/IncNet/Images/Login/rishum.gif' style='width:36px;height:30px;vertical-align:middle' alt='logo'><span id='LblTitle' dir='ltr' style='font-family:Arial,Narkisim;font-size:20px;'> <span style='color:black'>מידע למתעניינים/מועמדים</span> </span><img src='/IncNet/Images/Login/rishum.gif' style='width:36px;height:30px;vertical-align:middle' alt='logo'></td><td style='width:150px'>&nbsp;</td></tr></table></span>
+<span id="LblPage" class="pagekot" Dir="rtl">חישוב ציוני קבלה</span>
+<span class='br1'><br></span><div class='listtd rounddiv'>ניתן לבצע את הפעולות הבאות:<br><ul><li>חישוב <b>ציון ההתאמה</b> על פי ממוצע בגרות, ציון פסיכומטרי.</li><li>בירור <b>ממוצע בגרות</b> נדרש, לפי ציון פסיכומטרי ובהתאם לציון ההתאמה המאפשר קבלה לחוג.</li><li>בירור <b>הציון הפסיכומטרי</b> הנדרש על פי ממוצע בגרות נתון ובהתאם לציון ההתאמה המאפשר קבלה לחוג.</li><li>
+יש להזין את ממוצע הבגרות המותאם, המחושב לפי כללי האוניברסיטה, כמפורט באתר מידע למועמדים.</li><li>ממוצע הבגרות המותאם המכסימלי האפשרי הוא <b>115</b>.</li></ul></div><br><BR />
+<span class='br4'><br></span>
+<form method="post" action="./Tziunim.aspx" id="frmfree" onSubmit="return chk_form()">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwOTIyNjIwNjQPFg4eB21lY2hpbmFkHgVzaGFuYWUeBWFfaGF0Zh4Fa19oYXRmHgVhX2JhZ2YeBWtfYmFnZh4FdF9iYWdmFgICCQ9kFgICAQ8WAh4EVGV4dAV2Jm5ic3A7Jm5ic3A716DXkCDXnNeR15fXldeoINeQ16og16HXldeSINeU16bXmdeV158g15TXnteR15XXp9epLCDXldec15TXlteZ158g15DXqiDXoNeq15XXoNeZINeU15fXmdep15XXkSZuYnNwOyZuYnNwO2QYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgYFBnJkU3VnMQUGcmRTdWcxBQZyZFN1ZzIFBnJkU3VnMgUGcmRTdWczBQZyZFN1ZzPlDcGQ3FBF1a1IAUuSOuVDIL4GiILj3He9NhWHcdmHXg==" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A8657CD6" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAjTXnnCX0PYjgrV2+RyFrC4UcvNScKIMFGMoyyyWalOCPowOZKnFntRi6dZY8u7LnAAkVInIdXr7THKVORwc9NBdI0nddCh/XXQn6/owDm6Zr9J/m18W80U3ZlPMYxXm/eAl4n0PtIC8mpwwElKA7V4zUBpfBxkIWhFcfWFBDt26kl82nSDk4yokl133CYz2m2WKKvhTPwz6mlLICRk4D6Q" />
+<table class="freetable" dir="rtl">
+	<caption class="freecaptions" style="text-align:right">&nbsp;&nbsp;נא לבחור את סוג הציון המבוקש, ולהזין את נתוני החישוב&nbsp;&nbsp;</caption>
+    <tbody class="msgnrm2" style="text-align:right">
+	<tr>
+		<td>
+			<input id="rdSug1" type="radio" name="sug" value="1" onclick="chgsug(1);" />
+			ציון התאמה
+		</td>
+		<td style="text-align:center;width:150px"><input name="txtHatama" type="text" maxlength="3" readonly="readonly" id="txtHatama" tabindex="1" class="freedisb" Size="6" onKeyPress="return chkDigits(event,&#39;&#39;)" /></td>
+	</tr>
+	<tr>
+		<td>
+			<input id="rdSug2" type="radio" name="sug" value="2" onclick="chgsug(2);" />
+			<a href='Bagrut.aspx'>ממוצע בגרות מותאם</a>
+		</td>
+		<td style="text-align:center;width:150px"><input name="txtBagrut" type="text" maxlength="6" readonly="readonly" id="txtBagrut" tabindex="2" class="freedisb" Size="6" onKeyPress="return chkDigits(event,&#39;.&#39;)" /></td>
+	</tr>
+	<tr>
+		<td>
+			<input id="rdSug3" type="radio" name="sug" value="3" onclick="chgsug(3);" />
+			ציון פסיכומטרי
+		</td>
+		<td style="text-align:center;width:150px"><input name="txtPsicho" type="text" maxlength="3" readonly="readonly" id="txtPsicho" tabindex="3" class="freedisb" Size="6" onKeyPress="return chkDigits(event,&#39;&#39;)" /></td>
+	</tr>	
+    </tbody>
+</table>
+<span class='br10'><br></span>
+<input type='image' name='btncalc' id='btncalc'  tabindex=4 class='hideprint' align=absmiddle src='/IncNet/Images/Buttons/calc.gif'  alt='calc'  onmouseover="this.src='/IncNet/Images/Buttons/calc_over.gif'" onmouseout="this.src='/IncNet/Images/Buttons/calc.gif'"><br>
+<input type="hidden" name="mechina" id="mechina" />
+</form>
+<span class='br16'><br></span>
+<br>
+<span class='br1'><br></span><div class='listtdb rounddiv'>לחישוב על פי <b>ציון גמר מכינה</b> יש להקיש <a href='Tziunim.aspx?mec=yes'>כאן</a></div><br><br>
+<div id='spanlinks' class='listtdblds' style="display:inline-block">
+<hr style='color:skyblue;height:1px'>
+ <a href="/Md/">שירותי מידע למועמדים</a>
+| <a href="Hatachim.aspx">חתכי קבלה/דחיה</a>  
+| <a href="Sikuim.aspx">סיכויי קבלה</a>
+| <a href="Bagrut.aspx">חישוב ממוצע בגרות</a> 
+<br><br>Copyright ©, <a href="http://www.tau.ac.il">Tel Aviv University-TAU</a> ,All Rights Reserved
+</div>
+</div>
+<script type="text/javascript">
+if(parent.frames.length>0)
+{
+    document.getElementById('spankot').style.display='none';
+    document.getElementById('spanlinks').style.display='none';
+}
+</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PTHW4H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PTHW4H');</script>
+<!-- End Google Tag Manager -->
+
+</body>
+</html>
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<title>אוניברסיטת ת"א-חישוב ממוצע בגרות מותאם</title>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
+<link   type="text/css" rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/themes/start/jquery-ui.css">
+<script type="text/javascript" src="/IncNet/V4/TauMajor.js?ver=000"></script>
+<link   type="text/css" rel="stylesheet" href="/IncNet/V4/TauMajorS.css?ver=000">
+<style type="text/css">
+#divbottom li{padding:3px}
+</style>
+</head>
+
+<body>
+<div align="center" class="divcenter">
+<span id='spankot'><table class=msgsmall dir=rtl style='width:100%;background-color:#b3dffd;'><tr style='text-align:right'><td id='logo' style='width:200px'><img src='/IncNet/Images/Login/tau_logon_heb.gif' alt='logo'></td><td style='text-align:center'><img src='/IncNet/Images/Login/rishum.gif' style='width:36px;height:30px;vertical-align:middle' alt='logo'><span id='LblTitle' dir='ltr' style='font-family:Arial,Narkisim;font-size:20px;'> <span style='color:black'>מידע למתעניינים/מועמדים</span> </span><img src='/IncNet/Images/Login/rishum.gif' style='width:36px;height:30px;vertical-align:middle' alt='logo'></td><td style='width:150px'>&nbsp;</td></tr></table></span>
+<span id="LblPage" class="pagekots" Dir="rtl">חישוב ממוצע בגרות מותאם-תוצאה</span>
+<span class='br16'><br></span>
+<span class='msgerr' dir=rtl>לתשומת לב, חסרים מקצועות חובה לבגרות מלאה!</span><table class='table' dir=rtl cellpadding='4' border='1' bordercolor=skyblue><tr class='listth'><th>מקצוע</th><th>י. לימוד</th><th>ציון</th><th>בונוס</th><th>מקצוע שהושמט</th></tr><tr style='text-align:center'><td style='text-align:right'><b>אזרחות&nbsp;</b></td><td>5</td><td>&nbsp;90&nbsp;</td><td>20</td><td style='color:red'></td></tr><tr style='text-align:center'><td style='text-align:right'><b>אנגלית&nbsp;</b></td><td>5</td><td>&nbsp;80&nbsp;</td><td>25</td><td style='color:red'></td></tr><tr class='rowalter' style='text-align:center'><td style='text-align:left'><b>סה"כ י. לימוד&nbsp;>></b></td><td style='font-size:16px'><b>10</b></td><td style='font-size:16px'><b>&nbsp;107.5&nbsp;</b></td><td colspan=2 style='text-align:right'><b><<&nbsp;ממוצע בגרות מותאם</b></td></tr></table>
+<span class="br10"><br></span>
+<a href="javascript:history.go(-1)"><img src='/IncNet/Images/Buttons/back.gif' border=0 align=absmiddle class='hideprint' style='cursor:pointer;'  alt='Back'  onmouseover="this.src='/IncNet/Images/Buttons/back_over.gif'" onmouseout="this.src='/IncNet/Images/Buttons/back.gif'"></a>
+<br><br>
+<div class="rounddiv listtd">
+<ul>
+<li>ממוצע הבגרות שמחושב הוא ממוצע בגרות אופטימלי.<br>
+הממוצע מתקבל כתוצאה מהשמטת הציונים <b>במקצועות הבחירה בלבד</b>,<br>
+הגורמים להורדת ממוצע הבגרות, <b>בתנאי ש:</b><br>
+<b>- סך כל יחידות הלימוד אחרי ההשמטה הוא לפחות 20.</b></li>
+<li>בחישוב ממוצע הבגרות ניתן בונוס לציונים בבחינות הבגרות (אך ורק לאותם מקצועות הזכאים לכך),<br>
+ברמה של 4 יחידות לימוד ומעלה ובתנאי שהציון הוא לפחות 60.</li>
+</ul>
+</div>
+<span class="br10"><br></span>
+<div id="divbottom" class="rounddiv listtds">
+תעודת הבגרות לפי המתכונת של יחידות לימוד, חייבת לענות על כל הסעיפים, כמפורט להלן:<br>
+<ul style="list-style-type:decimal">
+<li>20 יחידות לימוד לפחות.</li>
+<li>בחינת הבגרות במתמטיקה חייבת להיות ברמה של שלוש יחידות לפחות,<br>
+כשהציון הנדרש הוא לפחות 55  (שהוא הציון המינימלי הנדרש בכל היקף יחידות שהוא),<br>
+לנבחנים ממחזור תשל"ט והלאה.</li>
+<li>בחינת בגרות באנגלית (או צרפתית), ברמה של ארבע יחידות לפחות, כשציון המינימום הנדרש הוא 55.<br>
+מועמדים שנבחנו בבחינות הבגרות לעולים,רשאים להבחן בשפה אחרת<br>
+ב-4 יחידות לפחות, ולהשיג ציון 60 לפחות.</li>
+<li>בחינת בגרות במקצוע מוגבר (רמה של 4 יחידות לפחות, בנוסף על מקצוע השפה המפורט בסעיף 3 לעיל).<br>
+בחינה זו יכולה להיות בכל מקצוע שהוא, גם אם הוא אחד ממקצועות החובה (מתמטיקה, למשל).<br>
+דרישה זו חלה על נבחנים ממחזור תשנ"ב והלאה.</li>
+<li>בחינת בגרות אחת לפחות, במקצוע כללי כנדרש ע"י משרד החינוך והתרבות.<br>
+בחינה זו תהיה ברמה של 2 יחידות לימוד לפחות,לנבחנים משנת תשנ"ב ואילך.<br>
+מי שנבחן במקצוע כללי ברמה של 4 יחידות,ייחשב גם כעומד בדרישה שבסעיף 4.</li>
+</ul>
+<br>&nbsp;&nbsp;&nbsp;
+תעודת בגרות אקסטרנית:<br>&nbsp;&nbsp;&nbsp;
+כל המפורט בסעיפים 1 עד 3 דלעיל חל עליה.<br>&nbsp;&nbsp;&nbsp;
+לממוצע שיתקבל תינתן תוספת של 2 נקודות.
+</div>
+<span class="br16"><br><br></span>
+<div id='spanlinks' class='listtdblds' style="display:inline-block">
+<hr style='color:skyblue;height:1px'>
+ <a href="/Md/">שירותי מידע למועמדים</a>
+| <a href="Hatachim.aspx">חתכי קבלה/דחיה</a>  
+| <a href="Sikuim.aspx">סיכויי קבלה</a>
+| <a href="Tziunim.aspx">חישוב ציוני קבלה</a> 
+<br><br>Copyright ©, <a href="http://www.tau.ac.il">Tel Aviv University-TAU</a> ,All Rights Reserved
+</div>
+</div>
+<script type="text/javascript">
+if(parent.frames.length>0)
+{
+    document.getElementById('spankot').style.display='none';
+    document.getElementById('spanlinks').style.display='none';
+}
+</script>
+</body>
+</html>
+
+
+
+
+Process finished with exit code 0

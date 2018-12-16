@@ -1,0 +1,10 @@
+host name 
+ec2-18-216-149-228.us-east-2.compute.amazonaws.com
+
+username
+root
+
+password
+d0rym3t
+
+same key pair file
